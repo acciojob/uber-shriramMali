@@ -49,17 +49,17 @@ public class CustomerServiceImpl implements CustomerService {
 		List<Driver> drivers=driverRepository2.findAll();
 
 		if(drivers.size()==0){
-			throw new Exception("NO cab Avilable");
+			throw new Exception("No cab available!");
 		}
 
 		int lowestIdAvilable=Integer.MAX_VALUE;
 		for(Driver driver:drivers){
 
-			if(driver.getDriverId()<lowestIdAvilable && driver.getCab().getAvailable())
+			if(driver.getDriverId()<lowestIdAvilable && driver.getCab().getAvailable()==true)
 				lowestIdAvilable=driver.getDriverId();
 		}
-		if(drivers.size()==0 || lowestIdAvilable==Integer.MAX_VALUE){
-			throw new Exception("NO cab Avilable");
+		if( lowestIdAvilable==Integer.MAX_VALUE){
+			throw new Exception("No cab available!");
 		}
 		Driver driver=driverRepository2.findById(lowestIdAvilable).get();
 		int bill= driver.getCab().getPerKmRate()*distanceInKm;;
