@@ -26,11 +26,11 @@ public class Customer {
     }
 
     public Customer(){}
-    public int getDriverId() {
+    public int customerId() {
         return customerId;
     }
 
-    public void setDriverId(int driverId) {
+    public void customerId(int driverId) {
         this.customerId = driverId;
     }
 

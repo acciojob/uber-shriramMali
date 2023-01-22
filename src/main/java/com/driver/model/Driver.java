@@ -29,11 +29,11 @@ public class Driver {
         this.mobile = mobile;
     }
 
-    public int getCustomerId() {
+    public int getdriverId() {
         return driverId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setdriverId(int customerId) {
         this.driverId = customerId;
     }
 

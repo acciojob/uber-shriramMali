@@ -47,7 +47,7 @@ public class Cab{
   this.perKmRate = perKmRate;
  }
 
- public boolean isAvilable() {
+ public boolean getAvilable() {
   return avilable;
  }
 
