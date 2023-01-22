@@ -1,6 +1,6 @@
 package com.driver.model;
 
-import jdk.jfr.DataAmount;
+//import jdk.jfr.DataAmount;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

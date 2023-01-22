@@ -26,12 +26,13 @@ public class Customer {
     }
 
     public Customer(){}
-    public int customerId() {
+
+    public int getCustomerId() {
         return customerId;
     }
 
-    public void customerId(int driverId) {
-        this.customerId = driverId;
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
     public String getPassword() {

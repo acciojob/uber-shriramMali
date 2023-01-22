@@ -29,12 +29,12 @@ public class Driver {
         this.mobile = mobile;
     }
 
-    public int getdriverId() {
+    public int getDriverId() {
         return driverId;
     }
 
-    public void setdriverId(int customerId) {
-        this.driverId = customerId;
+    public void setDriverId(int driverId) {
+        this.driverId = driverId;
     }
 
     public String getPassword() {
