@@ -51,34 +51,37 @@ public class CustomerServiceImpl implements CustomerService {
 		if(drivers.size()==0){
 			throw new Exception("No cab available!");
 		}
-
+		Driver driver1=null;
 		int lowestIdAvilable=Integer.MAX_VALUE;
 		for(Driver driver:drivers){
 
 			if(driver.getDriverId()<lowestIdAvilable && driver.getCab().getAvailable()==true)
+			{
 				lowestIdAvilable=driver.getDriverId();
+				driver1=driver;
+			}
 		}
 		if( lowestIdAvilable==Integer.MAX_VALUE){
 			throw new Exception("No cab available!");
 		}
-		Driver driver=null;
-		driver=driverRepository2.findById(lowestIdAvilable).get();
-		int bill= driver.getCab().getPerKmRate()*distanceInKm;;
+
+
+		int bill= driver1.getCab().getPerKmRate()*distanceInKm;;
 
 		TripBooking tripBooking=new TripBooking(fromLocation,toLocation,distanceInKm,TripStatus.CONFIRMED,bill);
 
 		Customer customer=customerRepository2.findById(customerId).get();
 		tripBooking.setCustomer(customer);
-		tripBooking.setDriver(driver);
+		tripBooking.setDriver(driver1);
 
-		driver.getCab().setAvailable(false);
+		driver1.getCab().setAvailable(false);
 
 
-	    driver.getTripBookings().add(tripBooking);
+	    driver1.getTripBookings().add(tripBooking);
 		customer.getTripBookings().add(tripBooking);
 
 		customerRepository2.save(customer);
-		driverRepository2.save(driver);
+		driverRepository2.save(driver1);
 	//	tripBookingRepository2.save(tripBooking);
 
 	return tripBooking;
