@@ -61,7 +61,8 @@ public class CustomerServiceImpl implements CustomerService {
 		if( lowestIdAvilable==Integer.MAX_VALUE){
 			throw new Exception("No cab available!");
 		}
-		Driver driver=driverRepository2.findById(lowestIdAvilable).get();
+		Driver driver=null;
+		driver=driverRepository2.findById(lowestIdAvilable).get();
 		int bill= driver.getCab().getPerKmRate()*distanceInKm;;
 
 		TripBooking tripBooking=new TripBooking(fromLocation,toLocation,distanceInKm,TripStatus.CONFIRMED,bill);
