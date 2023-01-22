@@ -52,8 +52,8 @@ public class CustomerServiceImpl implements CustomerService {
 		int lowestIdAvilable=Integer.MAX_VALUE;
 		for(Driver driver:drivers){
 
-			if(driver.getdriverId()<lowestIdAvilable && driver.getCab().getAvilable())
-				lowestIdAvilable=driver.getdriverId();
+			if(driver.getDriverId()<lowestIdAvilable && driver.getCab().getAvilable())
+				lowestIdAvilable=driver.getDriverId();
 		}
 		if(drivers.size()==0 || lowestIdAvilable==Integer.MAX_VALUE){
 			throw new Exception("NO cab Avilable");
