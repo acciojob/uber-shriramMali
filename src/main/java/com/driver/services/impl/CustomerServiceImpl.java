@@ -52,7 +52,7 @@ public class CustomerServiceImpl implements CustomerService {
 		int lowestIdAvilable=Integer.MAX_VALUE;
 		for(Driver driver:drivers){
 
-			if(driver.getDriverId()<lowestIdAvilable && driver.getCab().getAvilable())
+			if(driver.getDriverId()<lowestIdAvilable && driver.getCab().getAvailable())
 				lowestIdAvilable=driver.getDriverId();
 		}
 		if(drivers.size()==0 || lowestIdAvilable==Integer.MAX_VALUE){
@@ -64,7 +64,7 @@ public class CustomerServiceImpl implements CustomerService {
 		Driver driver=driverRepository2.findById(driverId).get();
 		Customer customer=customerRepository2.findById(customerId).get();
 
-		driver.getCab().setAvilable(false);
+		driver.getCab().setAvailable(false);
 
 		tripBooking.setCustomer(customer);
 		tripBooking.setDriver(driver);
@@ -89,7 +89,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 		customer.getTripBookings().remove(tripBooking);
 		driver.getTripBookings().remove(tripBooking);
-		driver.getCab().setAvilable(true);
+		driver.getCab().setAvailable(true);
 
 		tripBooking.setCustomer(null);
 		tripBooking.setDriver(null);
@@ -105,7 +105,7 @@ public class CustomerServiceImpl implements CustomerService {
 		TripBooking tripBooking=tripBookingRepository2.findById(tripId).get();
 		Customer customer=tripBooking.getCustomer();
 		Driver driver=tripBooking.getDriver();
-		driver.getCab().setAvilable(true);
+		driver.getCab().setAvailable(true);
 		tripBooking.setStatus(TripStatus.COMPLETED);
 
 		driverRepository2.save(driver);

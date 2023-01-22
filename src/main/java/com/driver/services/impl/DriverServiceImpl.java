@@ -38,7 +38,7 @@ public class DriverServiceImpl implements DriverService {
 		Cab cab=driver.getCab();
 		int id=cab.getId();
 
-		cab.setAvilable(true);
+		cab.setAvailable(true);
 		driver.setCab(null);
 
 		driverRepository3.delete(driverRepository3.findById(driverId).get());
@@ -50,7 +50,7 @@ public class DriverServiceImpl implements DriverService {
 		//Set the status of respective car to unavailable
 		Driver driver=driverRepository3.findById(driverId).get();
 		Cab cab=driver.getCab();
-		cab.setAvilable(false);
+		cab.setAvailable(false);
 
 		driverRepository3.save(driver);
 
