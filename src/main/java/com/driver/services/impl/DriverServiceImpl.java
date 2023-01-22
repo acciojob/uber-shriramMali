@@ -26,7 +26,7 @@ public class DriverServiceImpl implements DriverService {
 		driver.setCab(cab);
 		cab.setDriver(driver);
 
-		cabRepository3.save(cab);
+		//cabRepository3.save(cab);
 		driverRepository3.save(driver);
 	}
 

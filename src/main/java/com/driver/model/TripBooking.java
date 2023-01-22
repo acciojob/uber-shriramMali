@@ -30,11 +30,12 @@ public class TripBooking {
 
     public TripBooking(){}
 
-    public TripBooking(String fromLocation, String toLocation, int distanceInKm, TripStatus status) {
+    public TripBooking(String fromLocation, String toLocation, int distanceInKm, TripStatus status,int bill) {
         this.fromLocation = fromLocation;
         this.toLocation = toLocation;
         this.distanceInKm = distanceInKm;
         this.status = status;
+        this.bill=bill;
     }
 
     public int getTripBookingId() {
