@@ -104,15 +104,11 @@ public class CustomerServiceImpl implements CustomerService {
 		//Complete the trip having given trip Id and update TripBooking attributes accordingly
 
 		TripBooking tripBooking=tripBookingRepository2.findById(tripId).get();
-		Customer customer=tripBooking.getCustomer();
 		Driver driver=tripBooking.getDriver();
 		driver.getCab().setAvailable(true);
 		tripBooking.setStatus(TripStatus.COMPLETED);
 
-		driverRepository2.save(driver);
-		customerRepository2.save(customer);
 		tripBookingRepository2.save(tripBooking);
-
 
 	}
 }
