@@ -65,6 +65,7 @@ public class CustomerServiceImpl implements CustomerService {
 		Customer customer=customerRepository2.findById(customerId).get();
 
 		driver.getCab().setAvailable(false);
+		tripBooking.setBill(driver.getCab().getPerKmRate()*distanceInKm);
 
 		tripBooking.setCustomer(customer);
 		tripBooking.setDriver(driver);
@@ -82,6 +83,8 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public void cancelTrip(Integer tripId){
 		//Cancel the trip having given trip Id and update TripBooking attributes accordingly
+
+
 		TripBooking tripBooking=tripBookingRepository2.findById(tripId).get();
 
 		Customer customer=tripBooking.getCustomer();
@@ -102,14 +105,15 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public void completeTrip(Integer tripId){
 		//Complete the trip having given trip Id and update TripBooking attributes accordingly
+
 		TripBooking tripBooking=tripBookingRepository2.findById(tripId).get();
 		Customer customer=tripBooking.getCustomer();
 		Driver driver=tripBooking.getDriver();
 		driver.getCab().setAvailable(true);
 		tripBooking.setStatus(TripStatus.COMPLETED);
 
-		driverRepository2.save(driver);
-		customerRepository2.save(customer);
+//		driverRepository2.save(driver);
+//		customerRepository2.save(customer);
 		tripBookingRepository2.save(tripBooking);
 
 
